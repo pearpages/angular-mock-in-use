@@ -1,0 +1,22 @@
+{
+  "name": "learning-angular-mock",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "pearpages <pere@soms.cat>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/pearpages/learning-angular-mock",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mocks": "~1.4.8",
+    "angular": "~1.4.8"
+  }
+}
