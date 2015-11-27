@@ -26,6 +26,9 @@ describe('omdb service', function() {
 
 
     it('should return search movie data for search query', function() {
+        //dump function to show the objects or functions in a nicely way
+        //we cannot use the shortcut dump because it's already used
+        //console.log(angular.mock.dump(movieData));
         expect(omdbApi.search('star wars')).toEqual(movieData);
     });
 
