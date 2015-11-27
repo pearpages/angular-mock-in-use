@@ -2,7 +2,11 @@
 
 * Jasmine (test Framework)
 * Karma (test Runner)
+    - karma-jasmine
+    - karma-chrome-launcher
+    - karma-phantomjs-launcher
 * ngMock (Angular library)
+* PhantomJS (browser)
 
 ## The Open Movie Database
 [http://www.omdbapi.com](http://www.omdbapi.com)
