@@ -12,24 +12,21 @@
             find: find
         };
 
-        function search(query) {
+        function httpPromise (url) {
             var deferred = $q.defer();
-            $http.get(baseUrl + 's=' + encodeURIComponent(query)).
+            $http.get(url).
                 success(function(data) {
                     deferred.resolve(data);
                 });
-
             return deferred.promise;
         }
 
-        function find(id) {
-            var deferred = $q.defer();
-            $http.get(baseUrl + 'i=' + id).
-                success(function(data) {
-                    deferred.resolve(data);
-                });
+        function search(query) {
+            return httpPromise(baseUrl + 's=' + encodeURIComponent(query));
+        }
 
-            return deferred.promise;
+        function find(id) {
+            return httpPromise(baseUrl + 'i=' + id);
         }
     }
 })();
