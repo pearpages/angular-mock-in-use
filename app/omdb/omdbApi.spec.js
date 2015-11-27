@@ -9,8 +9,8 @@ describe('omdb service', function() {
 
     //angular.mock.inject
     beforeEach(inject(function(_omdbApi_,_$httpBackend_) {
-            omdbApi = _omdbApi_;
-            $httpBackend = _$httpBackend_;
+        omdbApi = _omdbApi_;
+        $httpBackend = _$httpBackend_;
     }));
 
     //we can call the module itself or
@@ -27,39 +27,58 @@ describe('omdb service', function() {
     // });
 
 
-    it('should return search movie data for search query', function() {
+it('should return search movie data for search query', function() {
         //dump function to show the objects or functions in a nicely way
         //we cannot use the shortcut dump because it's already used
         //console.log(angular.mock.dump(movieData));
         
         $httpBackend.when('GET', 'http://www.omdbapi.com/?v=1&s=star%20wars')
-            .respond(200,movieData);
+        .respond(200,movieData);
         
         var response;
 
         omdbApi.search('star wars')
-            .then( function(data) {
-                response = data;
-            });
+        .then( function(data) {
+            response = data;
+        });
 
         $httpBackend.flush();
 
         expect(response).toEqual(movieData);
     });
 
-    it('should return data by id', function() {
-        var response;
+it('should return data by id', function() {
+    var response;
 
-        $httpBackend.expect('GET', 'http://www.omdbapi.com/?v=1&i=tt0076759')
-            .respond(200,movieDataById);
+    $httpBackend.expect('GET', 'http://www.omdbapi.com/?v=1&i=tt0076759')
+    .respond(200,movieDataById);
 
-        omdbApi.find('tt0076759')
-            .then(function(data) {
-                response = data;
-            });
-
-        $httpBackend.flush();
-
-        expect(response).toEqual(movieDataById);
+    omdbApi.find('tt0076759')
+    .then(function(data) {
+        response = data;
     });
+
+    $httpBackend.flush();
+
+    expect(response).toEqual(movieDataById);
+});
+
+it('should handle error', function() {
+    var response;
+
+    $httpBackend.expect('GET', 'http://www.omdbapi.com/?v=1&i=tt0076759')
+    .respond(500,movieDataById);
+
+    omdbApi.find('tt0076759')
+    .then(function(data) {
+        response = data;
+    })
+    .catch(function() {
+        response = 'Error!';
+    });
+
+    $httpBackend.flush();
+
+    expect(response).toEqual('Error!');
+});
 });
