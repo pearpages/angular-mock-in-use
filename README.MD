@@ -29,18 +29,45 @@
     browsers: ['PhantomJS'],
 ```
 
-## When vs. Expect
+## Testing API ($http)
 
-### When
+### When vs. Expect
+
+#### When
 
 * Black-box testing
 * Best for Working with Data
 * Use in Any Order
 * Re-use Allowed
 
-### Expect
+#### Expect
 
 * Strict Usage Testing
 * Best for Testing Exact Usage
 * Order Matters
 * Re-use **No^t** Allowed
+
+## Testing Controllers ($controller)
+
+ngMock $controller Service 
+
+```javascript
+$controller(constructor, locals, [bindings]);
+
+//constructor argument
+  // a string
+  $controller('GreetingController', locals, [bindings]);
+  // a function that creates the new controller
+  $controller(getInstance(), locals, [bindings]);
+
+//locals argument
+  //accepts an object that maps by key names to the arguments of the controller constructor function
+  //.e.g. $scope, $http, some service
+  $controller(constrructor, {$scope: myScope}, [bindings])
+
+//bindings
+  //accepts an object, where the values of the object e.g. properties or functions, 
+  //will be bound to the controller's this bindings.
+  $controller(constructor, locals, {name: 'Brad'})
+```
+
