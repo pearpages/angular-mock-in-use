@@ -7,7 +7,8 @@
 	function ResultsController(omdbApi,$location) {
 		var vm = this;
 		
-		vm.results;
+		vm.results = [];
+		vm.errorMessage = '';
 
 		activate();
 
@@ -16,6 +17,9 @@
 			omdbApi.search(query)
 			.then(function(data) {
 				vm.results = data.Search;
+			})
+			.catch(function() {
+				vm.errorMessage = 'Something went wrong!';
 			});
 		}
 		

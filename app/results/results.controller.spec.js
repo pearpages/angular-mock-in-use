@@ -27,7 +27,7 @@ describe('Results Controller', function() {
 
 	beforeEach(module('resultsModule'));
 
-	var $controller;
+	var $controllerCreator;
 	var $location;
 	var $q;
 	var $rootScope;
@@ -39,6 +39,10 @@ describe('Results Controller', function() {
 		$rootScope = _$rootScope_;
 		omdbApi = _omdbApi_;
 		$location = _$location_;
+		$controllerCreator = _$controller_;
+	}));
+
+	it('should load search results', function() {
 
 		spyOn(omdbApi,'search').and.callFake(function() {
 			var deferred = $q.defer();
@@ -47,10 +51,7 @@ describe('Results Controller', function() {
 		});
 
 		$location.search('q','star wars');
-		$controller = _$controller_('ResultsController', {omdbApi: omdbApi});
-	}));
-
-	it('should load search results', function() {
+		$controller = $controllerCreator('ResultsController');
 		
 		$rootScope.$apply(); //we use $rootScope to call do the calls
 
@@ -58,5 +59,20 @@ describe('Results Controller', function() {
 		expect($controller.results[1].Title).toBe(results.Search[1].Title);
 		expect($controller.results[2].Title).toBe(results.Search[2].Title);
 		expect(omdbApi.search).toHaveBeenCalledWith('star wars');
+	});
+
+	it('should set result status to error', function() {
+		spyOn(omdbApi,'search').and.callFake(function() {
+			var deferred = $q.defer();
+			deferred.reject();
+			return deferred.promise;
+		});
+
+		$location.search('q','star wars');
+		$controller = $controllerCreator('ResultsController');
+		
+		$rootScope.$apply(); //we use $rootScope to call do the calls
+
+		expect($controller.errorMessage).toBe('Something went wrong!');
 	});
 });
