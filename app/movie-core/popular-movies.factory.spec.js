@@ -37,6 +37,17 @@ describe('MovieCore', function() {
 	});
 
 	it('should get popular movie by id', function() {
+		//we use this way to get the url in the command line so lately paste it in the proper test
+		// $httpBackend.expectGET(function(url) {
+		// 	dump(url);
+		// 	return true;
+		// }).respond(200);
+		
+		$httpBackend.expectGet('popular/tt0076759')
+			.respond(200);
+
 		PopularMovies.get({ movieId: 'tt0076759'});
+
+		expect($httpBackend.flush).not.toThrow();
 	});
 });
