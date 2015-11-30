@@ -14,11 +14,21 @@
 				<h1><a href="#/">MovieApp</a></h1>
 				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, dolore?</p>
 			</div>
+			<div ng-controller="SearchController as vm">
+				<form class="form-inline-lg" ng-submit="vm.search()">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Film title..." ng-model="vm.query">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" ng-click="vm.search()">Submit</button>
+						</span>
+					</div>					
+				</form>
+			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div></div>
+		<div ng-view></div>
 	</div>
 
 	<hr>
