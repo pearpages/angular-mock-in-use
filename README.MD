@@ -28,3 +28,19 @@
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
 ```
+
+## When vs. Expect
+
+### When
+
+* Black-box testing
+* Best for Working with Data
+* Use in Any Order
+* Re-use Allowed
+
+### Expect
+
+* Strict Usage Testing
+* Best for Testing Exact Usage
+* Order Matters
+* Re-use **No^t** Allowed
