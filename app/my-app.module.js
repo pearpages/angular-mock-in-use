@@ -1,4 +1,4 @@
 (function() {
 	'use strict';
-	angular.module("myApp",['movieCore','mySearch','omdb']);
+	angular.module("myApp",['movieCore','mySearch','omdb','resultsModule']);
 })();
