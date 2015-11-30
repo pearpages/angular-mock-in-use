@@ -2,9 +2,9 @@
 	'use strict';
 
 	angular.module("movieCore")
-	.factory('popularMOvies',['ngResource',popularMOvies]);
+	.factory('PopularMovies',['$resource',PopularMovies]);
 
-	function popularMOvies($resource) {
+	function PopularMovies($resource) {
 		return $resource('popular/:movieId', {movieId: '@id'}, {
 			update: {
 				method: 'PUT'
