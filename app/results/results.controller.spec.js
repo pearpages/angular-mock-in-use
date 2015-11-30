@@ -28,15 +28,17 @@ describe('Results Controller', function() {
 	beforeEach(module('resultsModule'));
 
 	var $controller;
+	var $location;
 	var $q;
 	var $rootScope;
 	var omdbApi;
 
-	beforeEach(inject(function(_$controller_,_$q_,_$rootScope_,_omdbApi_) {
+	beforeEach(inject(function(_$controller_,_$q_,_$rootScope_,_omdbApi_,_$location_) {
 
 		$q = _$q_;
 		$rootScope = _$rootScope_;
 		omdbApi = _omdbApi_;
+		$location = _$location_;
 
 		spyOn(omdbApi,'search').and.callFake(function() {
 			var deferred = $q.defer();
@@ -44,11 +46,14 @@ describe('Results Controller', function() {
 			return deferred.promise;
 		});
 
-		$controller = _$controller_('ResultsController');
+		$location.search('q','star wars');
+		$controller = _$controller_('ResultsController', {omdbApi: omdbApi});
 	}));
 
 	it('should load search results', function() {
-		$rootScope.$apply();
+		
+		$rootScope.$apply(); //we use $rootScope to call do the calls
+
 		expect($controller.results[0].Title).toBe(results.Search[0].Title);
 		expect($controller.results[1].Title).toBe(results.Search[1].Title);
 		expect($controller.results[2].Title).toBe(results.Search[2].Title);
