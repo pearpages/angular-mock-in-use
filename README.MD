@@ -71,3 +71,19 @@ $controller(constructor, locals, [bindings]);
   $controller(constructor, locals, {name: 'Brad'})
 ```
 
+## $imeout
+
+Is an Angular's wrapper for **window.setTimeout**.
+
+```javascript
+//$timeout([fn], [delay], [invokeApply], [pass]);
+
+//first argument is the function we are going to execute
+//delay in ms
+//if we are updateing the view $apply
+//parameters to be executed in the function
+
+$timeout(function(msg) {
+  console.log(msg);
+}), 1000, false, 'I was delayed';
+```
