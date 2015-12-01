@@ -83,7 +83,21 @@ Is an Angular's wrapper for **window.setTimeout**.
 //if we are updateing the view $apply
 //parameters to be executed in the function
 
-$timeout(function(msg) {
+var timeout = $timeout(function(msg) {
   console.log(msg);
-}), 1000, false, 'I was delayed';
+}, 1000, false, 'I was delayed');
+
+$timeout.cancel(timeout);
+```
+
+### Testing $timeout
+
+- Asynchronous code is difficult to test
+- Dellays will make test execution slow
+
+ngMock $timeout
+
+```javascript
+$timeout.flush([delay]);
+$timoeut.verifyNoPendingTasks();
 ```

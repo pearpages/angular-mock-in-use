@@ -2,13 +2,17 @@
 	'use strict';
 
 	angular.module("mySearch")
-	.controller('SearchController',['$location',SearchController]);
+	.controller('SearchController',['$location','$timeout',SearchController]);
 
-	function SearchController($location) {
+	function SearchController($location,$timeout) {
 		var vm = this;
 
 		vm.query = '';
 		vm.search = search;
+		vm.keyup = keyup;
+		vm.keydown = keydown;
+		
+		var timeout;
 
 		activate();
 
@@ -17,10 +21,18 @@
 		}
 		
 		function search() {
-			console.log('here');
+			$timeout.cancel(timeout);
 			if(vm.query) {
 				$location.path('/results').search('q',vm.query);
 			}
+		}
+
+		function keyup() {
+			timeout = $timeout(vm.search(),1000);
+		}
+
+		function keydown() {
+			$timeout.cancel(timeout);
 		}
 	}
 })();
