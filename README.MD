@@ -129,3 +129,9 @@ $interval.cancel(interval);
 var miliseconds = 1000;
 $interval.flush(miliseconds);
 ```
+
+## Unit Test a Directive
+
+### $compile service
+
+Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together.

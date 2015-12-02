@@ -23,6 +23,7 @@ module.exports = function(config) {
         //I've finally done this because order matters when loading
         'app/**/*.module.js',
         'app/**/*.controller.js',
+        'app/**/*.directive.js',
         'app/**/*.factory.js',
         'app/**/*.spec.js'
     ],
