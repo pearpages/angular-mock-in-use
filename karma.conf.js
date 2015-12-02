@@ -20,7 +20,11 @@ module.exports = function(config) {
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-mocks/angular-mocks.js',
-        'app/**/*.js'
+        //I've finally done this because order matters when loading
+        'app/**/*.module.js',
+        'app/**/*.controller.js',
+        'app/**/*.factory.js',
+        'app/**/*.spec.js'
     ],
 
 
