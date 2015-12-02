@@ -135,3 +135,27 @@ $interval.flush(miliseconds);
 ### $compile service
 
 Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together.
+
+### $rootScope (ngMock)
+
+```javascript
+$rootScope.$apply(); // for promises
+$rootScope.$digest(); // for rendering templates
+
+//ngMock
+  //counts all the direct and indirect child scopes of the current scope
+$rootScope.$countChildScopes();
+$rootScope.$countWatchers();
+```
+
+#### Most common use is in testing Controllers
+
+```javascript
+//but using vm we don't inject an scope
+
+beforeEach(inject(function($controller, $rootScope) {
+  var $scope = $rootScope.$new();
+
+  $controller('GreetingController', {$scope: $scope});
+}));
+```
