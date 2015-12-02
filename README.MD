@@ -101,3 +101,31 @@ ngMock $timeout
 $timeout.flush([delay]);
 $timoeut.verifyNoPendingTasks();
 ```
+
+## Testing $interval (window.setInterval)
+
+```javascript
+// $interval(fn,delay, [count], [invokeApply], [pass]);
+
+var howManyTimesWeWishToRepeatUntilItStops = 3;
+var message = 'I run at intervals';
+
+var interval = $interval(function(message) {
+  console.log(message);
+}, 1000, howManyTimesWeWishToRepeatUntilItStops, false, message);
+
+$interval.cancel(interval);
+```
+
+### Testing $interval
+
+- Asynchronous code is difficult to test
+- Dellays will make test execution slow
+- How to advance through time?
+
+#### ngMock $interval
+
+```javascript
+var miliseconds = 1000;
+$interval.flush(miliseconds);
+```
