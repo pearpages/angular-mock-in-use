@@ -17,7 +17,7 @@
 		activate();
 
 		function activate() {
-			console.log('module search activated');
+			//console.log('module search activated');
 		}
 		
 		function search() {

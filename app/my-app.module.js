@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module("myApp",['ui.bootstrap','ngRoute','movieCore','mySearch','omdb','resultsModule'])
+	angular.module("myApp",['ui.bootstrap','ngRoute','movieCore','mySearch','omdb','resultsModule','home'])
 	.config(function($routeProvider) {
 		$routeProvider
 			.otherwise({
@@ -8,6 +8,6 @@
 			})
 	})
 	.run(function() {
-		console.log('app has started');
+		//console.log('app has started');
 	});
 })();

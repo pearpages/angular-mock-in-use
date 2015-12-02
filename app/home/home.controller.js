@@ -2,9 +2,9 @@
 	'use strict';
 
 	angular.module("home")
-	.controller('HomeController',['$interval',HomeController]);
+	.controller('HomeController',['$interval','omdbApi','PopularMovies',HomeController]);
 
-	function HomeController() {
+	function HomeController($interval,omdbApi,PopularMovies) {
 		var vm = this;
 
 		//public
@@ -18,27 +18,24 @@
 		activate();
 
 		function activate() {
-			results = [
-			{
-				"Title":"Star Wars: Episode IV - A New Hope",
-				"imdbID":"tt0076759"
-			},
-			{
-				"Title":"Star Wars: Episode V - The Empire STrikes Back",
-				"imdbID":"tt0080684"
-			},
-			{
-				"Title":"Star Wars: Episode VI - Return of the Jedi",
-				"imdbID":"tt0086190"
-			}
-			];
-
-			vm.result = results[0];
-
-			$interaval(function() {
-				++idx;
-				vm.result = results[idx  % results.length];
-			}, 5000);
+			// PopularMovies.get()
+			// .then(function(data) {
+				var data = ['tt0076759','tt0080684','tt0086190'];
+				results = data;
+				findMovie(results[0]);
+				$interval(function() {
+					++idx;
+					findMovie(results[idx  % results.length]);
+				}, 5000);
+			// });
 		}
+
+		function findMovie(id) {
+			omdbApi.find(id)
+			.then(function(data) {
+				vm.result = data;
+			}); 
+		}
+
 	}
 })();
