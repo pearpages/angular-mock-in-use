@@ -171,3 +171,9 @@ A Date object instance has tow states:
 
 Because of the *local time* / *UTC time* tests can fail when writing unit tests.
 
+### TzDate
+
+TzDate helps creates a time environment for tests.
+
+Its main puprpose is to create Date-like instances with timezone fixed to the specified timezone offset, so that we can test code that depends on local timezone settings without dependency on the time zone settings of the machine where the code is running.
+
