@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module("myApp",['ui.bootstrap','ngRoute','movieCore','mySearch','omdb','resultsModule','home'])
+	angular.module("myApp",['ui.bootstrap','ngRoute','movieCore','mySearch','omdb','resultsModule','home','utilities'])
 	.config(function($routeProvider) {
 		$routeProvider
 			.otherwise({

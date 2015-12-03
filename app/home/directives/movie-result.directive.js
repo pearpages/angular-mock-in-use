@@ -24,7 +24,7 @@
 						'<p>{{vmd.result.Plot}}</p>',
 						'<p><strong>Director:</strong> {{vmd.result.Director}}</p>',
 						'<p><strong>Actors:</strong> {{vmd.result.Actors}}</p>',
-						'<p><strong>Released:</strong> {{vmd.result.Released}}</p>',
+						'<p><strong>Released:</strong> {{vmd.result.Released}} ({{vmd.result.Released | fromNow}})</p>',
 						'<p><strong>Genre:</strong> {{vmd.result.Genre}}</p>',
 					'</div>',
 				'</div>'

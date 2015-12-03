@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module("home",['omdb','movieCore','ngRoute'])
+	angular.module("home",['omdb','movieCore','ngRoute','utilities'])
 	.config(function($routeProvider) {
 		$routeProvider
 			.when('/', {

@@ -21,7 +21,7 @@ describe('Movie Result Directive', function() {
 				'<p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore ipsam fugit vero, autem asperiores accusamus ea unde magni, distinctio excepturi, minus amet repudiandae debitis nulla voluptatem earum deleniti error reiciendis culpa ut incidunt sunt. Omnis at minima non porro ullam hic delectus beatae eligendi rerum voluptatibus ratione tempora modi vitae architecto doloribus molestiae, nesciunt aperiam doloremque magni vero alias corporis. Ea cupiditate nostrum aliquid, repellendus, voluptate numquam expedita quod quasi. Dolore facere odit eaque quas dolorum, omnis illo minima mollitia minus ratione, alias, rem excepturi qui aliquid doloremque odio suscipit. Culpa laboriosam eveniet doloremque veniam quae sit quia unde, tempora!</p>',
 				'<p class="ng-binding"><strong>Director:</strong> George Lucas</p>',
 				'<p class="ng-binding"><strong>Actors:</strong> Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing</p>',
-				'<p class="ng-binding"><strong>Released:</strong> 25 May 1977</p>',
+				'<p class="ng-binding"><strong>Released:</strong> 25 May 1977 (38 years ago)</p>',
 				'<p class="ng-binding"><strong>Genre:</strong> Action, Adventure, Fantasy</p>',
 			'</div>',
 		'</div>'
