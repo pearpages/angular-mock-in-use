@@ -159,3 +159,15 @@ beforeEach(inject(function($controller, $rootScope) {
   $controller('GreetingController', {$scope: $scope});
 }));
 ```
+
+## Javascript Dates
+
+Time is measured in milliseconds since **Thu, 01 Jan 1970**. We can construct new dates via string representations **Simplified ISO 8601 Extended Format** (YYYY-MM-DDTHH:mm:ss.sssZ).
+
+A Date object instance has tow states:
+
++ UTC time
++ Local time based on system
+
+Because of the *local time* / *UTC time* tests can fail when writing unit tests.
+
