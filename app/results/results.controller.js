@@ -9,6 +9,7 @@
 		
 		vm.results = [];
 		vm.errorMessage = '';
+		vm.expand = expand;
 
 		activate();
 
@@ -21,6 +22,13 @@
 			.catch(function() {
 				vm.errorMessage = 'Something went wrong!';
 			});
+		}
+
+		function expand(index, id) {
+				omdbApi.find(id)
+				.then(function(data) {
+					vm.results[index].data = data;
+				});	
 		}
 		
 	}
