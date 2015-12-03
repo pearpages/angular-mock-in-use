@@ -177,3 +177,18 @@ TzDate helps creates a time environment for tests.
 
 Its main puprpose is to create Date-like instances with timezone fixed to the specified timezone offset, so that we can test code that depends on local timezone settings without dependency on the time zone settings of the machine where the code is running.
 
+**We can setup a timezone that will not change according to the local machine**.
+
+```javascript
+it('should display happy new year message',function() {
+
+  //0 is for the timezone information
+  $scope.nowTime = new angular.mock.TzDate(0, '2015-01-01:00:00:00z');
+  $scope.nextYear = 2015;
+
+  var countdownController = $controller('CountdownController', {$scope: $scope});
+  expect($scope.message).toBe('Happy new Year!');
+});
+```
+
+For the functionality that TzDate does not supply we can use **spyOn**.
